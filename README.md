@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Reebal Faakhir Andrabi — Portfolio
 
-## Getting Started
+A recruiter-facing portfolio built to answer one question in 90 seconds: *can this
+person solve hard technical problems?* Research-first, dark, minimal.
 
-First, run the development server:
+**Stack:** Next.js 16 (App Router) · React 19 · TypeScript · Tailwind v4 · Framer
+Motion · react-markdown. Deploy target: Vercel.
+
+## Develop
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build (also type-checks)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Content — everything is data, so updates are one-file changes
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Add or edit a project
+Create `src/content/projects/<name>.ts` exporting a `Project` (see
+`src/content/projects/types.ts`), then register it in
+`src/content/projects/index.ts`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `featured: true` puts it on the homepage; `order` sets ranking.
+- Card-only projects just need `summary` + `highlights`.
+- A full case study adds `sections` (block types: `p`, `list`, `callout`, `table`,
+  `metrics`, `code`, `image`, `diagram`), rendered by `BlockRenderer`.
+- Custom SVG diagrams live in `src/components/projects/diagrams.tsx` — add a
+  component, register it by `id`, and reference it with `{ type: "diagram", id }`.
 
-## Learn More
+### Add a blog post
+Drop a Markdown file in `src/content/blog/<slug>.md` with front-matter:
 
-To learn more about Next.js, take a look at the following resources:
+```markdown
+---
+title: "Post title"
+date: "2026-07-01"
+excerpt: "One-line summary."
+tags: ["Machine Learning"]
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Body in Markdown…
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+It appears automatically on `/blog`, newest first.
 
-## Deploy on Vercel
+### Site-wide config
+Name, roles, email, and links live in `src/lib/site.ts`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Assets in `public/`
+- `reebal.jpg` — hero portrait
+- `resume.pdf` — linked from the résumé buttons
+- `reports/*.pdf` — per-project report links
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploy to Vercel
+1. Push this folder to a GitHub repo.
+2. Import it on Vercel (framework auto-detected as Next.js).
+3. Set the env var `NEXT_PUBLIC_SITE_URL` to the production URL (used by
+   `sitemap.ts`, `robots.ts`, and Open Graph metadata).
