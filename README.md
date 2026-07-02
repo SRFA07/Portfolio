@@ -1,4 +1,4 @@
-# Reebal Faakhir Andrabi — Portfolio
+# Syed Reebal Faakhir Andrabi — Portfolio
 
 A recruiter-facing portfolio built to answer one question in 90 seconds: *can this
 person solve hard technical problems?* Research-first, dark, minimal.
