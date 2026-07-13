@@ -1,9 +1,7 @@
 import Link from "next/link";
-import { FileText } from "lucide-react";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import { site } from "@/lib/site";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { ResumeMenu } from "@/components/ui/resume-menu";
 import { MobileMenu } from "./mobile-menu";
 
 export function Nav() {
@@ -48,15 +46,7 @@ export function Nav() {
           >
             <FaLinkedinIn className="h-[18px] w-[18px]" />
           </a>
-          <a
-            href={site.resumeUrl}
-            target="_blank"
-            rel="noreferrer"
-            className={cn(buttonVariants({ variant: "outline", size: "sm" }), "ml-1.5 hidden sm:inline-flex")}
-          >
-            <FileText className="h-4 w-4" />
-            Resume
-          </a>
+          <ResumeMenu variant="outline" size="sm" align="right" className="ml-1.5 hidden sm:block" />
           <MobileMenu />
         </div>
       </nav>

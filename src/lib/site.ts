@@ -10,7 +10,14 @@ export const site = {
     "I build and rigorously validate machine-learning systems for high-stakes domains, and I report honest numbers.",
   location: "IIT Kanpur, India",
   email: "reebalf24@iitk.ac.in", // institute email from resume; swap if you prefer another
-  resumeUrl: "/resume.pdf",
+  // Role-specific résumés (add/rename by dropping a PDF in public/resumes/).
+  resumes: [
+    { label: "SDE", href: "/resumes/SDE.pdf" },
+    { label: "Finance", href: "/resumes/Finance.pdf" },
+    { label: "Consult", href: "/resumes/Consult.pdf" },
+    { label: "Core", href: "/resumes/Core.pdf" },
+    { label: "Analyst", href: "/resumes/Analyst.pdf" },
+  ],
   links: {
     github: "https://github.com/SRFA07",
     linkedin: "https://www.linkedin.com/in/reebal-andrabi-95ab37322/",

@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { ArrowRight, FileText } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa6";
 import { site } from "@/lib/site";
 import { Container } from "@/components/layout/container";
 import { Reveal } from "@/components/motion/reveal";
 import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { ResumeMenu } from "@/components/ui/resume-menu";
 
 export function Hero() {
   return (
@@ -68,15 +68,7 @@ export function Hero() {
                   View work
                   <ArrowRight className="h-4 w-4" />
                 </Link>
-                <a
-                  href={site.resumeUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={buttonVariants({ variant: "outline" })}
-                >
-                  <FileText className="h-4 w-4" />
-                  Resume
-                </a>
+                <ResumeMenu variant="outline" size="md" align="left" />
                 <a
                   href={site.links.github}
                   target="_blank"

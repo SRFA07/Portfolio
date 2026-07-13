@@ -49,7 +49,7 @@ Name, roles, email, and links live in `src/lib/site.ts`.
 
 ## Assets in `public/`
 - `reebal.jpg` — hero portrait
-- `resume.pdf` — linked from the résumé buttons
+- `resumes/*.pdf` — role-specific résumés (SDE, Finance, Consult, Core, Analyst); the list lives in `src/lib/site.ts` under `resumes`
 - `reports/*.pdf` — per-project report links
 
 ## Deploy to Vercel

@@ -1,4 +1,4 @@
-import { ArrowRight, FileText } from "lucide-react";
+import { FileText } from "lucide-react";
 import { site } from "@/lib/site";
 import { Container, Section, Eyebrow } from "@/components/layout/container";
 import { Reveal } from "@/components/motion/reveal";
@@ -24,18 +24,27 @@ export function Contact() {
               I&apos;m open to software engineering, machine learning, and AI-research
               internships. The fastest way to reach me is email.
             </p>
-            <div className="relative mt-9 flex flex-wrap items-center justify-center gap-3">
+            <div className="relative mt-9 flex flex-col items-center gap-8">
               <CopyEmail email={site.email} />
-              <a
-                href={site.resumeUrl}
-                target="_blank"
-                rel="noreferrer"
-                className={buttonVariants({ variant: "primary" })}
-              >
-                <FileText className="h-4 w-4" />
-                Download résumé
-                <ArrowRight className="h-4 w-4" />
-              </a>
+              <div className="flex flex-col items-center gap-3">
+                <span className="font-mono text-xs uppercase tracking-[0.16em] text-fg-subtle">
+                  Role-specific résumés
+                </span>
+                <div className="flex flex-wrap justify-center gap-2">
+                  {site.resumes.map((r) => (
+                    <a
+                      key={r.label}
+                      href={r.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={buttonVariants({ variant: "outline", size: "sm" })}
+                    >
+                      <FileText className="h-4 w-4" />
+                      {r.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </Reveal>

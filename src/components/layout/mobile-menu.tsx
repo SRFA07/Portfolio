@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, X, FileText } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -45,16 +45,25 @@ export function MobileMenu() {
               {item.label}
             </Link>
           ))}
-          <a
-            href={site.resumeUrl}
-            target="_blank"
-            rel="noreferrer"
-            onClick={() => setOpen(false)}
-            className="mt-3 inline-flex items-center gap-2 py-2 text-[15px] text-accent"
-          >
-            <FileText className="h-4 w-4" />
-            Résumé
-          </a>
+          <div className="mt-3 border-t border-line pt-3">
+            <div className="pb-2 font-mono text-[10px] uppercase tracking-[0.16em] text-fg-subtle">
+              Role-specific résumés
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {site.resumes.map((r) => (
+                <a
+                  key={r.label}
+                  href={r.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => setOpen(false)}
+                  className="rounded-lg border border-line px-3 py-1.5 text-sm text-accent transition-colors hover:bg-surface"
+                >
+                  {r.label}
+                </a>
+              ))}
+            </div>
+          </div>
         </nav>
       </div>
     </div>
